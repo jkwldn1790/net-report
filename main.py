@@ -1,10 +1,13 @@
 import speedtest
 import json
+import psycopg2
+import write_results
+from config import config
+from datetime import datetime
 
-# s = speedtest.Speedtest()
-# s.download()
-# results_dict = s.results.dict()
-# print(results_dict['download'])
+def time():
+    now = datetime.now()
+    return now.strftime("%D %H:%M:%S")
 
 def speed_test_download():
     s = speedtest.Speedtest()
@@ -16,6 +19,7 @@ def speed_test_upload():
     s.upload()
     return s.results.dict()
 
-test_download = speed_test_download()
-test_upload = speed_test_upload()
-print("\nDownload Speed: {}\nUpload Speed: {}\n".format(test_download['download'], test_upload['upload']))
+download = speed_test_download()
+upload = speed_test_upload()
+
+write_results.insert_nettest(time(),download['download'],upload['upload'])
