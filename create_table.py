@@ -11,8 +11,8 @@ def create_tables():
         CREATE TABLE netresults (
             id SERIAL PRIMARY KEY,
             time VARCHAR(255),
-            download VARCHAR(255),
-            upload VARCHAR(255)
+            download numeric,
+            upload numeric
         )
         """,)
     conn = None
