@@ -39,7 +39,10 @@ upload = speed_test_upload()
 average_download = avg(retrieve_by_column(2))
 average_upload = avg(retrieve_by_column(3))
 
-write_results.insert_nettest(time(),download['download'],upload['upload'])
+download = round(download['download'], 2)
+upload = round(upload['upload'], 2)
+
+write_results.insert_nettest(time(),download,upload)
 
 stats_template = """
 Upload Speed: {} Mb/s
@@ -48,10 +51,10 @@ Download Speed: {} Mb/s
 Average Download Speed: {} Mb/s
 Average Upload Speed: {} Mb/s
 """.format(
-    round(upload['upload'] / 1000000, 2),
-    round(download['download'] / 1000000, 2),
+    round(upload / 1000000, 2),
+    round(download / 1000000, 2),
     round(average_download / 1000000, 2),
-    round(average_upload / 1000000, 2),
+    round(average_upload / 1000000, 2)
 )
 
 print(stats_template)
