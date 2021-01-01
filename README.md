@@ -1,6 +1,11 @@
 # net-report
 Application to report network performance over a period of time
 
+## Setup
+Installing psycopg2 `pip3 install psycopg2-binary`
+
+## Running
+`docker run -it --network host test:v1`
 
 ## Database Structure
 

@@ -22,7 +22,7 @@ def speed_test_upload():
     return round(results['upload'] / 1000000, 2)
 
 def avg(results_given): # Function to take in an array and average the values.
-    return round(sum(results_given) / len(results_given) / 1000000, 2)
+    return round(sum(results_given) / len(results_given), 2)
 
 def retrieve_by_column(column):
     results = []
@@ -36,13 +36,13 @@ def retrieve_by_column(column):
     return results
     conn.close()
 
-average_download = avg(retrieve_by_column(2))
-average_upload = avg(retrieve_by_column(3))
-
 download = speed_test_download()
 upload = speed_test_upload()
 
 write_results.insert_nettest(time(),download,upload)
+
+average_download = avg(retrieve_by_column(2))
+average_upload = avg(retrieve_by_column(3))
 
 stats_template = """
 Upload Speed: {} Mb/s
