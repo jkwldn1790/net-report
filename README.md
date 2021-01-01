@@ -17,4 +17,5 @@ Time | Download | Upload
 
 
 ## Roadmap
+- Move the workload to kubernetes to be scheduled as a cronjob
 - Incorporate flask to present a single webpage with the intention of using prometheus/grafana setup to graph results.
