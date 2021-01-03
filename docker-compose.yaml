@@ -2,8 +2,15 @@ version: '3'
 services:
   postgres:
     image: postgres
+    volumes: 
+      # - myapp:/var/lib/postgres/data
+      - ./data:/var/lib/postgresql/data
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - postgres-data:/var/lib/postgres/data      
     ports:
       - "5432:5432"
     environment:
       POSTGRES_USER: jrw
       POSTGRES_PASSWORD: postgres
+volumes:
+  postgres-data:

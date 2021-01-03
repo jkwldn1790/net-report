@@ -11,3 +11,7 @@ build:
 
 run:
 	docker run -it --network host nettest:v1
+
+setup:
+	docker-compose up -d
+	./nettest/create_table.py
